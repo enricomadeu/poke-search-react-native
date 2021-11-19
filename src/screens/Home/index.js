@@ -11,21 +11,21 @@ function Home() {
 
   return (
     <>
-    <View style={styles.headerView}>
-        <Text style={styles.headerText}>{name.toUpperCase()}</Text>
-        <TouchableHighlight onPress={() => navigate("Login")} style={styles.headerImage}>
-            <Image source={require('../../assets/log-out.png')} style={{width: 45, height: 45}}/>
-        </TouchableHighlight>
-    </View>
-    <View style={styles.view}>
-        <Image source={require('../../assets/pokemon-logo.png')} style={styles.logo}/>
-        <TouchableHighlight style={styles.button}>
-            <Text style={styles.buttonText}>TODOS OS POKEMONS</Text>
-        </TouchableHighlight>
-        <TouchableHighlight style={styles.button}>
-            <Text style={styles.buttonText}>PESQUISAR POKEMON</Text>
-        </TouchableHighlight>
-    </View>
+        <View style={styles.headerView}>
+            <Text style={styles.headerText}>{name.toUpperCase()}</Text>
+            <TouchableHighlight onPress={() => navigate("Login")} style={styles.headerImage}>
+                <Image source={require('../../assets/log-out.png')} style={{width: 45, height: 45}}/>
+            </TouchableHighlight>
+        </View>
+        <View style={styles.view}>
+            <Image source={require('../../assets/pokemon-logo.png')} style={styles.logo}/>
+            <TouchableHighlight style={styles.button}>
+                <Text style={styles.buttonText}>TODOS OS POKEMONS</Text>
+            </TouchableHighlight>
+            <TouchableHighlight style={styles.button}>
+                <Text style={styles.buttonText}>PESQUISAR POKEMON</Text>
+            </TouchableHighlight>
+        </View>
     </>
   );
 }
