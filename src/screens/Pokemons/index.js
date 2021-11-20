@@ -20,7 +20,7 @@ function Pokemons() {
   const {getPokeApi, getId} = usePoke()
 
   async function searchPokemon(){
-    const response = await getId(search)
+    const response = await getId(search.toLowerCase())
 
     setPokemon(response.results)
   }
@@ -40,7 +40,7 @@ function Pokemons() {
         <Header name={name}/>
         <View style={styles.view}>
           <View style={styles.horizontalViewSearch}>
-            <TextInput placeholder="PESQUISAR POKEMON" style={styles.textInput} textAlign="center" value={search} onChangeText={setSearch}/>
+            <TextInput placeholder="PESQUISAR POKEMON" placeholderTextColor="#d6d6d6" style={styles.textInput} textAlign="center" value={search} onChangeText={setSearch}/>
             <TouchableHighlight style={styles.searchButton} onPress={searchPokemon}>
               <Image source={require('../../assets/loupe.png')} resizeMode='contain' style={styles.image}/>
             </TouchableHighlight>

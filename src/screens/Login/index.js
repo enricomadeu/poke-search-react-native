@@ -30,8 +30,8 @@ function Login() {
           </Text>
         </View>
         <View style={styles.inputView}>
-          <TextInput placeholder="USUÁRIO" style={styles.textInput} textAlign="left" value={name} onChangeText={setName}/>
-          <TextInput placeholder="SENHA" style={styles.textInput} textAlign="left" value={password} onChangeText={setPassword} secureTextEntry={true}/>
+          <TextInput placeholder="USUÁRIO" placeholderTextColor="#d6d6d6" style={styles.textInput} textAlign="left" value={name} onChangeText={setName}/>
+          <TextInput placeholder="SENHA" placeholderTextColor="#d6d6d6" style={styles.textInput} textAlign="left" value={password} onChangeText={setPassword} secureTextEntry={true}/>
           <View style={styles.horizontalView}>
             <TouchableHighlight style={styles.button} onPress={() => navigate("Register")}>
               <Text style={styles.buttonText}>

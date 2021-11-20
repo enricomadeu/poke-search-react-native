@@ -35,9 +35,9 @@ function Register() {
           </Text>
         </View>
         <View>
-          <TextInput placeholder="USUÁRIO" style={styles.textInput} textAlign="left" value={name} onChangeText={setName}/>
-          <TextInput placeholder="SENHA" style={styles.textInput} textAlign="left" value={password} onChangeText={setPassword} secureTextEntry={true}/>
-          <TextInput placeholder="CONFIRME A SENHA" style={styles.textInput} textAlign="left" value={confirmPassword} onChangeText={setConfirmPassword} secureTextEntry={true}/>
+          <TextInput placeholder="USUÁRIO" placeholderTextColor="#d6d6d6" style={styles.textInput} textAlign="left" value={name} onChangeText={setName}/>
+          <TextInput placeholder="SENHA" placeholderTextColor="#d6d6d6" style={styles.textInput} textAlign="left" value={password} onChangeText={setPassword} secureTextEntry={true}/>
+          <TextInput placeholder="CONFIRME A SENHA" placeholderTextColor="#d6d6d6" style={styles.textInput} textAlign="left" value={confirmPassword} onChangeText={setConfirmPassword} secureTextEntry={true}/>
           <View style={styles.horizontalView}>
             <TouchableHighlight style={styles.button} onPress={() => goBack()}>
               <Text style={styles.buttonText}>
