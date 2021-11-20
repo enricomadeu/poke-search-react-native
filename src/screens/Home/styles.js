@@ -8,27 +8,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         padding: 20
     },
-    headerView: {
-        flexDirection: 'row',
-        backgroundColor: '#0071b9',
-        height: 65,
-        width: '100%',
-        justifyContent: 'center',   
-        alignItems: 'center',
-        padding: 10
-    },
-    headerText:{
-        fontSize: 30,
-        fontWeight: 'bold',
-        color: '#FFCB05'
-    },
-    headerImage: {
-        width: 45,
-        height: 45,
-        position: 'absolute',
-        right: 10,
-        top: 10,
-    },
     logo:{
         width: 300,
         height: 110,
@@ -63,12 +42,14 @@ const styles = StyleSheet.create({
         paddingHorizontal: 33,
         paddingVertical: 15,
         borderRadius: 10,
-        marginVertical: 10
+        marginVertical: 10,
+        width: 200,        
     },
     buttonText:{
         fontSize: 20,
         fontWeight: 'bold',
-        color: '#FFCB05'
+        color: '#FFCB05',
+        textAlign: 'center'
     }
 
 });

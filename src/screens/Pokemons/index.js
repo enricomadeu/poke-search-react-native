@@ -1,46 +1,46 @@
 import React, { useState, useEffect } from "react"
-import { Text, TextInput, View, TouchableHighlight, Image, Alert } from 'react-native'
+import { View, FlatList   } from 'react-native'
 import styles from "./styles"
 import { useNavigation, useRoute } from "@react-navigation/native"
 import Background from "../../components/Background"
+import Header from "../../components/Header"
+import { usePoke } from "../../hooks/usePoke"
+import PokeCard from "../../components/PokeCard"
 
-function Home() {
+function Pokemons() {
 
-  const {navigate} = useNavigation(),
-  route = useRoute(),
-  {name} = route.params
+  const route = useRoute(),
+  {name} = route.params,
+  [pokemon, setPokemon] = useState([])  
 
-  useEffect(() => {
-    async function getPokeApi(){
-        const response = await fetch('https://pokeapi.co/api/v2/pokemon')
-        const json = await response.json()
-        console.log(json)
-    }
-    getPokeApi()
-  }, [])
+  let pokemonIndex = 1
+
+  const {getPokeApi} = usePoke()
+
+    useEffect(() => {
+        async function getPokemons(){
+            const response = await getPokeApi('pokemon')
+
+            setPokemon(response)
+        }
+        getPokemons()
+    }, [])
+
 
   return (
     <Background>
-        <View style={styles.headerView}>
-            <Text style={styles.headerText}>{name.toUpperCase()}</Text>
-            <TouchableHighlight onPress={() => navigate("Login")} style={styles.headerImage}>
-                <Image source={require('../../assets/log-out.png')} style={{width: 45, height: 45}}/>
-            </TouchableHighlight>
-        </View>
+        <Header name={name}/>
         <View style={styles.view}>
-            <Image source={require('../../assets/pokemon-logo.png')} style={styles.logo}/>
-            <TouchableHighlight style={styles.button}>
-                <Text style={styles.buttonText}>POKEMONS</Text>
-            </TouchableHighlight>
-            <TouchableHighlight style={styles.button}>
-                <Text style={styles.buttonText}>HABILIDADES</Text>
-            </TouchableHighlight>
-            <TouchableHighlight style={styles.button}>
-                <Text style={styles.buttonText}>TIPOS</Text>
-            </TouchableHighlight>
+            <FlatList 
+                numColumns={2}
+                data={pokemon.results}
+                extraData={pokemonIndex}
+                refreshing={true}
+                renderItem={(item) => <PokeCard data={item}/>}
+                keyExtractor={(item) => item.name}/>
         </View>
     </Background>
   );
 }
 
-export default Home
+export default Pokemons
