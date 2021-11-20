@@ -30,7 +30,7 @@ function Register() {
     <Background>
       <View style={styles.view}>
         <View>        
-          <Text style={styles.welcomeText} onPress={() => {navigate("Tela1")}}>
+          <Text style={styles.welcomeText}>
               REGISTRAR NOVO USUÁRIO
           </Text>
         </View>

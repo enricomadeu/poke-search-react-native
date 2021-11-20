@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     },
     horizontalView: {        
         flexDirection: "row",
-        marginBottom: 30,
+        marginTop: 20,        
         alignItems: "center",
     },
     textInput: {
@@ -32,21 +32,21 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         paddingHorizontal: 15,
         borderRadius: 10,
-        width: 300,
+        width: 355,
         borderWidth: 3,
         borderColor: '#0071b9',
-        marginBottom: 15
+        marginBottom: 25,
+        marginTop: 10
     },
     button: {
         backgroundColor: '#0071b9',
         paddingHorizontal: 33,
         paddingVertical: 15,
         borderRadius: 10,
-        marginVertical: 10,
-        width: 200,        
+        marginHorizontal: 10,
     },
     buttonText:{
-        fontSize: 20,
+        fontSize: 23,
         fontWeight: 'bold',
         color: '#FFCB05',
         textAlign: 'center'

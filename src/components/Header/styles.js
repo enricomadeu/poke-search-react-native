@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
         width: '100%',
         justifyContent: 'center',   
         alignItems: 'center',
-        padding: 10
+        padding: 10,
     },
     headerText:{
         fontSize: 30,

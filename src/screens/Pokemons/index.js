@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { View, FlatList   } from 'react-native'
+import { View, FlatList, TouchableHighlight, Text, TextInput } from 'react-native'
 import styles from "./styles"
 import { useNavigation, useRoute } from "@react-navigation/native"
 import Background from "../../components/Background"
@@ -9,7 +9,8 @@ import PokeCard from "../../components/PokeCard"
 
 function Pokemons() {
 
-  const route = useRoute(),
+  const {navigate, goBack} = useNavigation(),
+  route = useRoute(),
   {name} = route.params,
   [pokemon, setPokemon] = useState([])  
 
@@ -31,13 +32,27 @@ function Pokemons() {
     <Background>
         <Header name={name}/>
         <View style={styles.view}>
-            <FlatList 
-                numColumns={2}
-                data={pokemon.results}
-                extraData={pokemonIndex}
-                refreshing={true}
-                renderItem={(item) => <PokeCard data={item}/>}
-                keyExtractor={(item) => item.name}/>
+          <TextInput placeholder="PESQUISAR POKEMON" style={styles.textInput} textAlign="center"/>
+          <FlatList 
+            numColumns={2}
+            data={pokemon.results}
+            extraData={pokemonIndex}
+            refreshing={true}
+            renderItem={(item) => <PokeCard data={item}/>}
+            keyExtractor={(item) => item.name}
+          />
+          <View style={styles.horizontalView}>
+            <TouchableHighlight style={styles.button} onPress={() => goBack()}>
+              <Text style={styles.buttonText}>
+                VOLTAR
+              </Text>
+            </TouchableHighlight>
+            <TouchableHighlight style={styles.button}>
+              <Text style={styles.buttonText}>
+                PESQUISAR
+              </Text>
+            </TouchableHighlight>
+          </View>
         </View>
     </Background>
   );
