@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { View, FlatList, TouchableHighlight, Text, TextInput } from 'react-native'
+import { View, FlatList, TouchableHighlight, Text, TextInput, Image } from 'react-native'
 import styles from "./styles"
 import { useNavigation, useRoute } from "@react-navigation/native"
 import Background from "../../components/Background"
@@ -39,7 +39,12 @@ function Pokemons() {
     <Background>
         <Header name={name}/>
         <View style={styles.view}>
-          <TextInput placeholder="PESQUISAR POKEMON" style={styles.textInput} textAlign="center" value={search} onChangeText={setSearch}/>
+          <View style={styles.horizontalViewSearch}>
+            <TextInput placeholder="PESQUISAR POKEMON" style={styles.textInput} textAlign="center" value={search} onChangeText={setSearch}/>
+            <TouchableHighlight style={styles.searchButton} onPress={searchPokemon}>
+              <Image source={require('../../assets/loupe.png')} resizeMode='contain' style={styles.image}/>
+            </TouchableHighlight>
+          </View>
           <FlatList 
             numColumns={2}
             data={pokemon}
@@ -53,12 +58,12 @@ function Pokemons() {
               <Text style={styles.buttonText}>
                 VOLTAR
               </Text>
-            </TouchableHighlight>
-            <TouchableHighlight style={styles.button} onPress={searchPokemon}>
+            </TouchableHighlight>            
+            <TouchableHighlight style={styles.button} onPress={() => goBack()}>
               <Text style={styles.buttonText}>
-                PESQUISAR
+                SELECIONAR
               </Text>
-            </TouchableHighlight>
+            </TouchableHighlight> 
           </View>
         </View>
     </Background>

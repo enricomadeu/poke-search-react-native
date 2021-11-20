@@ -24,26 +24,30 @@ const styles = StyleSheet.create({
     },
     horizontalView: {        
         flexDirection: "row",
-        marginTop: 20,        
-        alignItems: "center",
+        marginTop: 15,
+        marginBottom: 5
+    },
+    horizontalViewSearch:{
+        flexDirection: "row",
+        alignItems: 'center',
+        marginBottom: 15,
+        marginTop: 10
     },
     textInput: {
         fontSize: 20,
         backgroundColor: 'white',
         paddingHorizontal: 15,
         borderRadius: 10,
-        width: 355,
+        width: '80%',
         borderWidth: 3,
         borderColor: '#0071b9',
-        marginBottom: 25,
-        marginTop: 10
     },
     button: {
         backgroundColor: '#0071b9',
-        paddingHorizontal: 33,
+        paddingHorizontal: 30,
         paddingVertical: 15,
         borderRadius: 10,
-        marginHorizontal: 10,
+        marginHorizontal: 8,
     },
     buttonText:{
         fontSize: 23,
@@ -51,39 +55,18 @@ const styles = StyleSheet.create({
         color: '#FFCB05',
         textAlign: 'center'
     },
-    grid: {
-        flex: 1,
-        margin: '5%',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderRadius: 15,
-        elevation: 5.5,
-        borderBottomWidth: 0
+    searchButton:{
+        backgroundColor: '#0071b9',
+        padding: 8,
+        borderRadius: 10,
+        marginHorizontal: 5,
     },
-    gridButton: {
-        backgroundColor: 'transparent', 
-        width: '50%'
-    },
-    fonte: {  
-        color: 'white',
-        fontSize: 22,
-        fontWeight: 'bold',
-        marginHorizontal: '7%',
-        marginBottom: '10%'
-    },
-    indexFont: {
-        alignSelf: 'flex-start', 
-        marginLeft: '3%',
-        marginTop: '2%', 
-        color: 'white'
-    },
-    imagem: {
+    image:{
         backgroundColor: 'transparent',
-        height: 100,
-        width: 100
+        height: 40,
+        width: 40
     },
-
+    
 });
 
 export default styles
