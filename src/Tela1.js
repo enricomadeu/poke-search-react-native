@@ -17,16 +17,13 @@ function Tela1() {
 
   return (
     <View style={styles.viewTela1}>
-      <View style={styles.horizontalView}>
-        <Image source={require('./assets/dolar.png')} style={styles.cotationImage}/>
+      <View style={styles.horizontalView}>        
         <TextInput placeholder="Dolar" keyboardType="numeric" style={styles.textInput} value={dolar} onChangeText={setDolar}/>
       </View>
-      <View style={styles.horizontalView}>
-        <Image source={require('./assets/euro.png')} style={styles.cotationImage}/>
+      <View style={styles.horizontalView}>        
         <TextInput placeholder="Euro" keyboardType="numeric" style={styles.textInput} value={euro} onChangeText={setEuro}/>
       </View>
-      <View style={styles.horizontalView}>
-        <Image source={require('./assets/libra.png')} style={styles.cotationImage}/>
+      <View style={styles.horizontalView}>        
         <TextInput placeholder="Libra" keyboardType="numeric" style={styles.textInput} value={libra} onChangeText={setLibra}/>
       </View>
       <TouchableOpacity style={styles.button} onPress={() => goBack()}>

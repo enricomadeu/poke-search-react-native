@@ -21,8 +21,7 @@ function Tela2() {
 
   return (
     <View style={styles.viewTela2}>
-      <View style={styles.horizontalView}>
-        <Image source={require('./assets/real.png')} style={styles.cotationImage}/>
+      <View style={styles.horizontalView}>        
         <TextInput placeholder="Real" keyboardType="numeric" style={styles.textInput} value={real} onChangeText={setReal}/>
       </View>
       <TouchableOpacity style={styles.button} onPress={cotar}>
