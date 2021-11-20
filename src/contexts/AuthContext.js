@@ -8,7 +8,7 @@ export default function AuthProvider({children}) {
 
     const {navigate} = useNavigation()
 
-    const users = [["Joao", "abc1r1"],  ["Jose", "fy63u*"], ["MaLu", "th678"],  ["Luck", "lsji48se"], ["Hansol",  "stwr478"], ["enrico", "123"]]
+    const users = [["Joao", "abc1r1"],  ["Jose", "fy63u*"], ["MaLu", "th678"],  ["Luck", "lsji48se"], ["Hansol",  "stwr478"], ["a", "a"]]
 
     function signIn(name, password){        
         for(let i = 0; i < users.length; i++){

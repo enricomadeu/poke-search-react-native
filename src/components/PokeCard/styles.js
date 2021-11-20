@@ -24,14 +24,21 @@ const styles = StyleSheet.create({
     },
     indexFont: {
         alignSelf: 'flex-start', 
-        marginLeft: '3%',
-        marginTop: '2%', 
+        marginLeft: '5%',
+        marginTop: '5%', 
         color: 'white'
     },
     imagem: {
         backgroundColor: 'transparent',
         height: 100,
         width: 100
+    },
+    checkBox:{
+        alignSelf: 'flex-end', 
+        marginRight: '2%',
+        marginTop: '-15%',
+        marginBottom: '-5%',
+        transform: [{scaleX: 0.8}, {scaleY: 0.8}]
     },
 
 });

@@ -12,30 +12,37 @@ function Pokemons() {
   const {navigate, goBack} = useNavigation(),
   route = useRoute(),
   {name} = route.params,
-  [pokemon, setPokemon] = useState([])  
+  [pokemon, setPokemon] = useState([]),
+  [search, setSearch] = useState("")
 
   let pokemonIndex = 1
 
-  const {getPokeApi} = usePoke()
+  const {getPokeApi, getId} = usePoke()
 
-    useEffect(() => {
-        async function getPokemons(){
-            const response = await getPokeApi('pokemon')
+  async function searchPokemon(){
+    const response = await getId(search)
 
-            setPokemon(response)
-        }
-        getPokemons()
-    }, [])
+    setPokemon(response.results)
+  }
+
+  useEffect(() => {
+      async function getPokemons(){
+          const response = await getPokeApi('pokemon')
+          
+          setPokemon(response.results)
+      }
+      getPokemons()
+  }, [])
 
 
   return (
     <Background>
         <Header name={name}/>
         <View style={styles.view}>
-          <TextInput placeholder="PESQUISAR POKEMON" style={styles.textInput} textAlign="center"/>
+          <TextInput placeholder="PESQUISAR POKEMON" style={styles.textInput} textAlign="center" value={search} onChangeText={setSearch}/>
           <FlatList 
             numColumns={2}
-            data={pokemon.results}
+            data={pokemon}
             extraData={pokemonIndex}
             refreshing={true}
             renderItem={(item) => <PokeCard data={item}/>}
@@ -47,7 +54,7 @@ function Pokemons() {
                 VOLTAR
               </Text>
             </TouchableHighlight>
-            <TouchableHighlight style={styles.button}>
+            <TouchableHighlight style={styles.button} onPress={searchPokemon}>
               <Text style={styles.buttonText}>
                 PESQUISAR
               </Text>
