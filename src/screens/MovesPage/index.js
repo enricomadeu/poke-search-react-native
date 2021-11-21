@@ -89,9 +89,6 @@ function MovesPage() {
                 }
             })
         }
-
-        console.log(Globais.currentBag.moves)
-        
     }
 
     function getImageType(type){
