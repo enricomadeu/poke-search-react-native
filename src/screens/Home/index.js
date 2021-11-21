@@ -20,7 +20,7 @@ function Home() {
                 <Text style={styles.buttonText}>POKEMONS</Text>
             </TouchableHighlight>
             <TouchableHighlight style={styles.button}>
-                <Text style={styles.buttonText}>HABILIDADES</Text>
+                <Text style={styles.buttonText}>MOVES</Text>
             </TouchableHighlight>
             <TouchableHighlight style={styles.button}>
                 <Text style={styles.buttonText}>TIPOS</Text>

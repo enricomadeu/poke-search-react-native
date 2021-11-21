@@ -3,10 +3,14 @@ import { StyleSheet } from "react-native"
 const styles = StyleSheet.create({
     view:{
         flex: 1,
-        backgroundColor: 'transparent',
+        backgroundColor: 'rgba(214, 214, 214, .5)',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: 20
+        padding: 20,
+        margin: 20,
+        borderRadius: 20,
+        elevation: 10
+
     },
     inputView:{                
         alignItems: 'center',
@@ -19,8 +23,7 @@ const styles = StyleSheet.create({
     welcomeText:{
         fontWeight: 'bold',
         textAlign: 'center',
-        fontSize: 30,
-        marginBottom: 20,
+        fontSize: 30,        
         marginTop: 40,
         color: '#000'
     },
@@ -38,14 +41,15 @@ const styles = StyleSheet.create({
         borderWidth: 3,
         borderColor: '#0071b9',
         marginBottom: 15,
-        color: 'black'
+        color: 'black',
     },
     button: {
         backgroundColor: '#0071b9',
         paddingHorizontal: 33,
         paddingVertical: 15,
         borderRadius: 10,
-        marginHorizontal: 10
+        marginHorizontal: 10,
+        elevation: 3
     },
     buttonText:{
         fontSize: 20,

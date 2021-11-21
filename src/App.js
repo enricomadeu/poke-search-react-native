@@ -8,6 +8,7 @@ import Login from "./screens/Login"
 import Register from "./screens/Register"
 import Home from "./screens/Home"
 import Pokemons from "./screens/Pokemons"
+import PokemonPage from "./screens/PokemonPage"
 import Tela1 from "./Tela1"
 import Tela2 from "./Tela2"
 
@@ -25,6 +26,7 @@ function App() {
             <Stack.Screen name="Register" component={Register}/>
             <Stack.Screen name="Home" component={Home}/>
             <Stack.Screen name="Pokemons" component={Pokemons}/>
+            <Stack.Screen name="PokemonPage" component={PokemonPage}/>
             <Stack.Screen name="Tela1" component={Tela1}/>
             <Stack.Screen name="Tela2" component={Tela2}/>
           </Stack.Navigator>

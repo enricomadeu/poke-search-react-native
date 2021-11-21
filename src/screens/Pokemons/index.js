@@ -5,6 +5,7 @@ import { useNavigation, useRoute } from "@react-navigation/native"
 import Background from "../../components/Background"
 import Header from "../../components/Header"
 import { usePoke } from "../../hooks/usePoke"
+import CheckBox from '@react-native-community/checkbox'
 import PokeCard from "../../components/PokeCard"
 
 function Pokemons() {
@@ -13,7 +14,7 @@ function Pokemons() {
   route = useRoute(),
   {name} = route.params,
   [pokemon, setPokemon] = useState([]),
-  [search, setSearch] = useState("")
+  [search, setSearch] = useState("")  
 
   let pokemonIndex = 1
 
@@ -23,6 +24,25 @@ function Pokemons() {
     const response = await getId(search.toLowerCase())
 
     setPokemon(response.results)
+  }
+
+  function PokemonCards(data){
+    // Define a numeração do pokemon
+    const url = data.item.url;
+    const pokeIndex = url.split('/')[url.split('/').length - 2];
+    // Pega a imagem do pokemon de acordo com sua numeração
+    const imageUrl = `https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/${pokeIndex}.png?raw=true`;
+
+    return(
+        <View style={styles.gridButton}>
+            <View style={[styles.grid, {backgroundColor: '#0071b9'}]}>
+                <Text style={styles.indexFont}>{pokeIndex}</Text>
+                <CheckBox style={styles.checkBox} tintColors={{ true: '#FFCB05', false: 'white'}}  />
+                <Image resizeMode="contain" source={{uri: imageUrl}} style={styles.imagem}/>
+                <Text style={styles.fonte}>{data.item.name}</Text>
+            </View>
+        </View>
+    ); 
   }
 
   useEffect(() => {
@@ -50,7 +70,7 @@ function Pokemons() {
             data={pokemon}
             extraData={pokemonIndex}
             refreshing={true}
-            renderItem={(item) => <PokeCard data={item}/>}
+            renderItem={(item) => <PokeCard data={item} name={name}/>}
             keyExtractor={(item) => item.name}
           />
           <View style={styles.horizontalView}>

@@ -1,15 +1,17 @@
 import React, { useState } from "react"
-import { Text, TextInput, View, TouchableHighlight, Image, Alert } from 'react-native'
+import { Text, TextInput, View, TouchableHighlight, Image, Alert, Modal } from 'react-native'
 import styles from "./styles"
 import { useNavigation } from "@react-navigation/native"
 import { useAuth } from "../../hooks/useAuth"
 import Background from "../../components/Background"
+import Register from "../Register"
 
 function Login() {
 
   const {navigate} = useNavigation(),  
   [name, setName] = useState(""),
   [password, setPassword] = useState(""),
+  [openModal, setOpenModal] = useState(false),
   {signIn} = useAuth()
 
   function handleSignIn(){    
@@ -21,7 +23,7 @@ function Login() {
   }
 
   return (
-    <Background>
+    <Background>      
       <View style={styles.view}>
         <View>
           <Image source={require('../../assets/pokemon-logo.png')} style={styles.logo}/>
@@ -33,7 +35,7 @@ function Login() {
           <TextInput placeholder="USUÁRIO" placeholderTextColor="#d6d6d6" style={styles.textInput} textAlign="left" value={name} onChangeText={setName}/>
           <TextInput placeholder="SENHA" placeholderTextColor="#d6d6d6" style={styles.textInput} textAlign="left" value={password} onChangeText={setPassword} secureTextEntry={true}/>
           <View style={styles.horizontalView}>
-            <TouchableHighlight style={styles.button} onPress={() => navigate("Register")}>
+            <TouchableHighlight style={styles.button} onPress={() => setOpenModal(true)}>
               <Text style={styles.buttonText}>
                 SIGN UP
               </Text>
@@ -46,6 +48,9 @@ function Login() {
           </View>
         </View>
       </View>
+      <Modal visible={openModal} animationType="slide">
+        <Register setOpenModal={setOpenModal}/>
+      </Modal>
     </Background>
   );
 }

@@ -5,12 +5,13 @@ import { useNavigation } from "@react-navigation/native";
 import { useAuth } from "../../hooks/useAuth"
 import Background from "../../components/Background"
 
-function Register() {
+function Register({setOpenModal}) {
 
   const {navigate, goBack} = useNavigation(),
   [name, setName] = useState(""),
   [password, setPassword] = useState(""),
   [confirmPassword, setConfirmPassword] = useState(""),
+  [hidden, setHidden] = useState(true),
   {signUp} = useAuth()
 
 
@@ -26,33 +27,33 @@ function Register() {
     }
   } 
 
-  return (
-    <Background>
-      <View style={styles.view}>
+  return (  
+    <View style={styles.view}>
+      {hidden && (
         <View>        
           <Text style={styles.welcomeText}>
               REGISTRAR NOVO USUÁRIO
           </Text>
         </View>
-        <View>
-          <TextInput placeholder="USUÁRIO" placeholderTextColor="#d6d6d6" style={styles.textInput} textAlign="left" value={name} onChangeText={setName}/>
-          <TextInput placeholder="SENHA" placeholderTextColor="#d6d6d6" style={styles.textInput} textAlign="left" value={password} onChangeText={setPassword} secureTextEntry={true}/>
-          <TextInput placeholder="CONFIRME A SENHA" placeholderTextColor="#d6d6d6" style={styles.textInput} textAlign="left" value={confirmPassword} onChangeText={setConfirmPassword} secureTextEntry={true}/>
-          <View style={styles.horizontalView}>
-            <TouchableHighlight style={styles.button} onPress={() => goBack()}>
-              <Text style={styles.buttonText}>
-                BACK
-              </Text>
-            </TouchableHighlight>
-            <TouchableHighlight style={styles.button} onPress={handleSignUp}>
-              <Text style={styles.buttonText}>
-                SIGN UP
-              </Text>
-            </TouchableHighlight>
-          </View>
+      )}
+      <View>
+        <TextInput placeholder="USUÁRIO" placeholderTextColor="#d6d6d6" style={[styles.textInput, {marginTop: 35}]} textAlign="left" value={name} onChangeText={setName} onFocus={() => setHidden(false)}/>
+        <TextInput placeholder="SENHA" placeholderTextColor="#d6d6d6" style={styles.textInput} textAlign="left" value={password} onChangeText={setPassword} secureTextEntry={true} onFocus={() => setHidden(false)}/>
+        <TextInput placeholder="CONFIRME A SENHA" placeholderTextColor="#d6d6d6" style={styles.textInput} textAlign="left" value={confirmPassword} onChangeText={setConfirmPassword} secureTextEntry={true} onFocus={() => setHidden(false)}/>
+        <View style={styles.horizontalView}>
+          <TouchableHighlight style={styles.button} onPress={() => setOpenModal(false)}>
+            <Text style={styles.buttonText}>
+              BACK
+            </Text>
+          </TouchableHighlight>
+          <TouchableHighlight style={styles.button} onPress={handleSignUp}>
+            <Text style={styles.buttonText}>
+              SIGN UP
+            </Text>
+          </TouchableHighlight>
         </View>
       </View>
-    </Background>
+    </View>
   );
 }
 
