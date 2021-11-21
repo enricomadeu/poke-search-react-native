@@ -5,7 +5,7 @@ import { usePoke } from "../../hooks/usePoke"
 import { TouchableHighlight, View, Text, Image } from "react-native"
 import CheckBox from '@react-native-community/checkbox'
 
-export default function PokeCard({data, name}) {
+export default function PokeCard({data, name, pageType}) {
     
     const {navigate} = useNavigation(),
     [selectedCheckBox, setSelectedCheckBox] = useState(false) 
@@ -14,13 +14,13 @@ export default function PokeCard({data, name}) {
         
         setSelectedCheckBox(!selectedCheckBox)
 
-        setTimeout(() => {navigate("PokemonPage", {pokemonIndex, name})}, 500)
+        setTimeout(() => {navigate("PokemonPage", {pokemonIndex, name, pageType})}, 500)
 
         setTimeout(() => {setSelectedCheckBox(false)}, 1000)
     }
 
     // Define a numeração do pokemon
-    const url = data.item.url;
+    const url = data.item.url ? data.item.url : data.item.species.url;
     const pokemonIndex = url.split('/')[url.split('/').length - 2];
     // Pega a imagem do pokemon de acordo com sua numeração
     const imageUrl = `https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/${pokemonIndex}.png?raw=true`;

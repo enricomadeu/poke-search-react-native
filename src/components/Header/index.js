@@ -10,8 +10,6 @@ export default function Header(props) {
     {navigate} = useNavigation()
 
     function saveBag(){
-        
-        console.log(Globais.currentBag)
 
         Globais.allBags.forEach(user => {
             if(user.user == Globais.currentBag.user){
@@ -25,9 +23,7 @@ export default function Header(props) {
             pokemons: [],
             moves: []
         }
-
-        console.log(Globais.allBags)
-
+        
         navigate("Login")
     }
     

@@ -101,6 +101,19 @@ const styles = StyleSheet.create({
         color: 'grey',
         alignSelf: 'center',
         marginHorizontal: '8%',        
+    },
+
+    addText: {
+        fontSize: 18,
+        color: 'grey',
+        alignSelf: 'center',
+        marginRight: '3%'
+    },
+    horizontalViewAddMove: {
+        flexDirection: "row",
+        justifyContent: 'flex-end',
+        marginHorizontal: '1%',
+        marginTop: '2%'
     }
 });
 

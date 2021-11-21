@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react"
-import { View, TouchableHighlight, Text, Image, ActivityIndicator, FlatList } from 'react-native'
+import { View, TouchableHighlight, Text, Image, ActivityIndicator, Switch } from 'react-native'
 import styles from "./styles"
 import { useNavigation, useRoute } from "@react-navigation/native"
 import { usePoke } from "../../hooks/usePoke"
+import Globais from "../../components/Global"
 
 function MovesPage() {
 
@@ -33,16 +34,16 @@ function MovesPage() {
     {getSpecific} = usePoke(),    
     [themeColor, setThemeColor] = useState(""),
     [typeImageUrl, setTypeImageUrl] = useState(""),
-    [currentMove, setCurrentMove] = useState({
-        elementos: [],
+    [currentMove, setCurrentMove] = useState({        
         nome: '',
         descricao: '',
         tipo: '',
         efeito: '',
         poder: '',
-        forteContra: [],
-        fracoContra: []
-    })
+        index: moveIndex
+    }),
+    [switchValue, setSwitchValue] = useState(false)
+
 
     useEffect(() => {
         async function getFullMoveInformation(){
@@ -74,6 +75,12 @@ function MovesPage() {
             poder: data.power,
             tipo: data.type.name
         })
+
+        if(Globais.currentBag.moves.some(move => move.nome === data.name.toUpperCase())){
+            setSwitchValue(true)
+        }else{
+            setSwitchValue(false)
+        }
 
         
     }
@@ -139,6 +146,36 @@ function MovesPage() {
         }
     }
 
+    function moveToBag(){
+
+        setSwitchValue(!switchValue);
+
+        if(!switchValue){
+            Globais.currentBag.moves.push(currentMove)
+        }else{
+            Globais.currentBag.moves.forEach((move, index) => {
+                if(move.nome === currentMove.nome){
+                    Globais.currentBag.moves.splice(index, 1)
+                }
+            })
+        }
+        
+    }
+
+    function convertHex(hexCode,opacity){
+        var hex = hexCode.replace('#','');
+    
+        if (hex.length === 3) {
+            hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
+        }
+    
+        var r = parseInt(hex.substring(0,2), 16),
+            g = parseInt(hex.substring(2,4), 16),
+            b = parseInt(hex.substring(4,6), 16);
+    
+        return 'rgba('+r+','+g+','+b+','+opacity/100+')';
+    }
+
     if(!themeColor){
         return (
             <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
@@ -172,6 +209,15 @@ function MovesPage() {
                         <View style={styles.horizontalView}>
                             <Text style={[styles.secondTitle, {color: themeColor}]}>Tipo</Text>
                             <Text style={styles.textDescription}>{currentMove.tipo.toUpperCase()}</Text>
+                        </View>
+                        <View style={styles.horizontalViewAddMove}>
+                            <Text style={styles.addText}>{switchValue ? "Remove from" : "Add to"} bag</Text>
+                            <Switch
+                                trackColor={{ false: convertHex('#808080', 50), true: convertHex(themeColor, 50)}}
+                                thumbColor={switchValue ? themeColor : '#808080'}
+                                value={switchValue}
+                                onValueChange={moveToBag}
+                            />
                         </View>
                     </View>
                 </View>

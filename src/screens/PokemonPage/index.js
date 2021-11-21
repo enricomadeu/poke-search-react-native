@@ -30,25 +30,17 @@ function PokemonsPage() {
 
     const {navigate, goBack} = useNavigation(),
     route = useRoute(),
-    {pokemonIndex, name} = route.params,
+    {pokemonIndex, name, pageType} = route.params,
     {getSpecific} = usePoke(),    
     [themeColor, setThemeColor] = useState(""),
     [currentPokemon, setCurrentPokemon] = useState({
         nome: '',
         descricao: '',
-    }),
-    [switchValue, setSwitchValue] = useState(false)
-    
-
-    useEffect(() => {
-        async function getFullPokeInformation(){
-            const response = await getSpecific('pokemon', pokemonIndex)
-            const species = await await fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokemonIndex}`).then((data) => { return data.json()})
-
-            storageInformation(response, species)
-        }
-        getFullPokeInformation()
-    }, [])
+        index: pokemonIndex,
+        item: []
+    }),    
+    [switchValue, setSwitchValue] = useState(false),
+    [pokemon, setPokemon] = useState([])
 
     function storageInformation(data, species){
 
@@ -63,14 +55,17 @@ function PokemonsPage() {
 
         setCurrentPokemon({
             nome: data.name.toUpperCase(),
-            descricao: descricao
+            descricao: descricao,
+            item: data.item
         })
 
-        if(Globais.currentBag.pokemons.some(pokemon => pokemon.nome === data.name.toUpperCase())){
+        if(Globais.currentBag.pokemons.some(pokemon => pokemon.name === data.name)){
             setSwitchValue(true)
         }else{
             setSwitchValue(false)
         }
+
+        setPokemon(data)
     }
     
     
@@ -79,15 +74,14 @@ function PokemonsPage() {
         setSwitchValue(!switchValue);
 
         if(!switchValue){
-            Globais.currentBag.pokemons.push(currentPokemon)
+            Globais.currentBag.pokemons.push(pokemon)
         }else{
-            Globais.currentBag.pokemons.forEach((pokemon, index) => {
-                if(pokemon.nome === currentPokemon.nome){
+            Globais.currentBag.pokemons.forEach((pokemons, index) => {
+                if(pokemons.name === pokemon.name){
                     Globais.currentBag.pokemons.splice(index, 1)
                 }
             })
         }
-        
     }
 
     function convertHex(hexCode,opacity){
@@ -104,6 +98,24 @@ function PokemonsPage() {
         return 'rgba('+r+','+g+','+b+','+opacity/100+')';
     }
 
+    function pageBack(){
+        if(pageType){
+            navigate("BagPokemons", {name})
+        }else{
+            goBack()
+        }
+    }
+
+    useEffect(() => {
+        async function getFullPokeInformation(){
+            const response = await getSpecific('pokemon', pokemonIndex)
+            const species = await await fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokemonIndex}`).then((data) => { return data.json()})
+
+            storageInformation(response, species)
+        }
+        getFullPokeInformation()
+    }, [])
+
     if(!themeColor){
         return (
             <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
@@ -114,7 +126,7 @@ function PokemonsPage() {
         return (
             <View style={{flex: 1, backgroundColor: themeColor}}>
                 <View style={[styles.headerView]}>
-                    <TouchableHighlight onPress={() => goBack()} style={styles.headerBackImage}>
+                    <TouchableHighlight onPress={pageBack} style={styles.headerBackImage}>
                         <Image source={require('../../assets/back-arrow.png')} style={{width: 45, height: 45}}/>
                     </TouchableHighlight>
                     <Text style={styles.headerText}>{name.toUpperCase()}</Text>
