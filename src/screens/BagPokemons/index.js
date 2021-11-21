@@ -20,9 +20,7 @@ function BagPokemons() {
       setPokemon(Globais.currentBag.pokemons)
     }
     getPokemonsBag()
-  }, [Globais.currentBag.pokemons])
-
-  console.log(Globais.currentBag.pokemons)
+  }, [Globais.currentBag.pokemons])  
 
   return (
     <Background>

@@ -13,6 +13,7 @@ import Moves from "./screens/Moves"
 import MovesPage from "./screens/MovesPage"
 import BagPage from "./screens/Bag"
 import BagPokemons from "./screens/BagPokemons"
+import BagMoves from "./screens/BagMoves"
 
 const Stack = createNativeStackNavigator()
 
@@ -33,6 +34,7 @@ function App() {
             <Stack.Screen name="MovesPage" component={MovesPage}/>
             <Stack.Screen name="BagPage" component={BagPage}/>
             <Stack.Screen name="BagPokemons" component={BagPokemons}/>
+            <Stack.Screen name="BagMoves" component={BagMoves}/>
           </Stack.Navigator>
         </PokeProvider>
       </AuthProvider>

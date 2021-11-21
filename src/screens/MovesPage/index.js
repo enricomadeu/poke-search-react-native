@@ -30,10 +30,9 @@ function MovesPage() {
 
     const {navigate, goBack} = useNavigation(),
     route = useRoute(),
-    {moveIndex, name} = route.params,
+    {moveIndex, name, pageType} = route.params,
     {getSpecific} = usePoke(),    
     [themeColor, setThemeColor] = useState(""),
-    [typeImageUrl, setTypeImageUrl] = useState(""),
     [currentMove, setCurrentMove] = useState({        
         nome: '',
         descricao: '',
@@ -42,17 +41,8 @@ function MovesPage() {
         poder: '',
         index: moveIndex
     }),
-    [switchValue, setSwitchValue] = useState(false)
-
-
-    useEffect(() => {
-        async function getFullMoveInformation(){
-            const response = await getSpecific('move', moveIndex)
-
-            storageInformation(response)
-        }
-        getFullMoveInformation()
-    }, [])
+    [switchValue, setSwitchValue] = useState(false),
+    [move, setMove] = useState([])
 
     function storageInformation(data){
 
@@ -76,12 +66,31 @@ function MovesPage() {
             tipo: data.type.name
         })
 
-        if(Globais.currentBag.moves.some(move => move.nome === data.name.toUpperCase())){
+        if(Globais.currentBag.moves.some(move => move.name === data.name)){
             setSwitchValue(true)
         }else{
             setSwitchValue(false)
         }
 
+        setMove(data)
+        
+    }
+
+    function moveToBag(){
+
+        setSwitchValue(!switchValue);
+
+        if(!switchValue){
+            Globais.currentBag.moves.push(move)
+        }else{
+            Globais.currentBag.moves.forEach((moves, index) => {
+                if(moves.name === move.name){
+                    Globais.currentBag.moves.splice(index, 1)
+                }
+            })
+        }
+
+        console.log(Globais.currentBag.moves)
         
     }
 
@@ -146,22 +155,6 @@ function MovesPage() {
         }
     }
 
-    function moveToBag(){
-
-        setSwitchValue(!switchValue);
-
-        if(!switchValue){
-            Globais.currentBag.moves.push(currentMove)
-        }else{
-            Globais.currentBag.moves.forEach((move, index) => {
-                if(move.nome === currentMove.nome){
-                    Globais.currentBag.moves.splice(index, 1)
-                }
-            })
-        }
-        
-    }
-
     function convertHex(hexCode,opacity){
         var hex = hexCode.replace('#','');
     
@@ -176,6 +169,23 @@ function MovesPage() {
         return 'rgba('+r+','+g+','+b+','+opacity/100+')';
     }
 
+    function pageBack(){
+        if(pageType){
+            navigate("BagMoves", {name})
+        }else{
+            goBack()
+        }
+    }
+
+    useEffect(() => {
+        async function getFullMoveInformation(){
+            const response = await getSpecific('move', moveIndex)
+
+            storageInformation(response)
+        }
+        getFullMoveInformation()
+    }, [])
+
     if(!themeColor){
         return (
             <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
@@ -186,7 +196,7 @@ function MovesPage() {
         return (
             <View style={{flex: 1, backgroundColor: themeColor}}>
                 <View style={[styles.headerView]}>
-                    <TouchableHighlight onPress={() => goBack()} style={styles.headerBackImage}>
+                    <TouchableHighlight onPress={pageBack} style={styles.headerBackImage}>
                         <Image source={require('../../assets/back-arrow.png')} style={{width: 45, height: 45}}/>
                     </TouchableHighlight>
                     <Text style={styles.headerText}>{name.toUpperCase()}</Text>

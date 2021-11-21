@@ -21,7 +21,7 @@ function BagPage() {
             <TouchableHighlight style={styles.button} onPress={() => navigate("BagPokemons", {name})}>
                 <Text style={styles.buttonText}>POKEMONS</Text>
             </TouchableHighlight>
-            <TouchableHighlight style={styles.button} onPress={() => navigate("Moves", {name})}>
+            <TouchableHighlight style={styles.button} onPress={() => navigate("BagMoves", {name})}>
                 <Text style={styles.buttonText}>MOVES</Text>
             </TouchableHighlight>
             <TouchableHighlight style={styles.button} onPress={() => goBack()}>
