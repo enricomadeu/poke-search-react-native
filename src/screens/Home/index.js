@@ -16,14 +16,14 @@ function Home() {
         <Header name={name}/>
         <View style={styles.view}>
             <Image source={require('../../assets/pokemon-logo.png')} style={styles.logo}/>
-            <TouchableHighlight style={styles.button} onPress={() => {navigate("Pokemons", {name})}}>
+            <TouchableHighlight style={styles.button} onPress={() => navigate("Pokemons", {name})}>
                 <Text style={styles.buttonText}>POKEMONS</Text>
             </TouchableHighlight>
             <TouchableHighlight style={styles.button} onPress={() => navigate("Moves", {name})}>
                 <Text style={styles.buttonText}>MOVES</Text>
             </TouchableHighlight>
             <TouchableHighlight style={styles.button}>
-                <Text style={styles.buttonText}>TIPOS</Text>
+                <Text style={styles.buttonText}>MOCHILA</Text>
             </TouchableHighlight>
         </View>
     </Background>

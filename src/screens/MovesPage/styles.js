@@ -50,8 +50,8 @@ const styles = StyleSheet.create({
     },
     image:{
         backgroundColor: 'transparent',
-        height: 100,
-        width: 100,
+        height: 150,
+        width: 150,
         marginBottom: '5%'
     },
     headerView: {
