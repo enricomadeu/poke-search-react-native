@@ -8,20 +8,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         padding: 20
     },
-    logo:{
-        width: 300,
-        height: 110,
-        marginBottom: 50,
-        marginTop: -100,
-    },
-    welcomeText:{
-        fontWeight: 'bold',
-        textAlign: 'center',
-        fontSize: 30,
-        marginBottom: 20,
-        marginTop: 40,
-        color: '#000'
-    },
     horizontalViewSearch:{
         flexDirection: "row",
         alignItems: 'center',
@@ -62,7 +48,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'transparent',
         height: 40,
         width: 40
-    },    
+    },   
 });
 
 export default styles

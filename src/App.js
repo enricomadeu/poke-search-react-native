@@ -9,8 +9,8 @@ import Register from "./screens/Register"
 import Home from "./screens/Home"
 import Pokemons from "./screens/Pokemons"
 import PokemonPage from "./screens/PokemonPage"
-import Tela1 from "./Tela1"
-import Tela2 from "./Tela2"
+import Moves from "./screens/Moves"
+import MovesPage from "./screens/MovesPage"
 
 const Stack = createNativeStackNavigator()
 
@@ -27,8 +27,8 @@ function App() {
             <Stack.Screen name="Home" component={Home}/>
             <Stack.Screen name="Pokemons" component={Pokemons}/>
             <Stack.Screen name="PokemonPage" component={PokemonPage}/>
-            <Stack.Screen name="Tela1" component={Tela1}/>
-            <Stack.Screen name="Tela2" component={Tela2}/>
+            <Stack.Screen name="Moves" component={Moves}/>
+            <Stack.Screen name="MovesPage" component={MovesPage}/>
           </Stack.Navigator>
         </PokeProvider>
       </AuthProvider>

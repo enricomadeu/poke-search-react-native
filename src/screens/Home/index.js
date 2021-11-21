@@ -19,7 +19,7 @@ function Home() {
             <TouchableHighlight style={styles.button} onPress={() => {navigate("Pokemons", {name})}}>
                 <Text style={styles.buttonText}>POKEMONS</Text>
             </TouchableHighlight>
-            <TouchableHighlight style={styles.button}>
+            <TouchableHighlight style={styles.button} onPress={() => navigate("Moves", {name})}>
                 <Text style={styles.buttonText}>MOVES</Text>
             </TouchableHighlight>
             <TouchableHighlight style={styles.button}>

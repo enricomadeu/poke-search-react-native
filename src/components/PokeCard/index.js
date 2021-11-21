@@ -31,7 +31,7 @@ export default function PokeCard({data, name}) {
                 <Text style={styles.indexFont}>{pokemonIndex}</Text>
                 <CheckBox style={styles.checkBox} tintColors={{ true: '#FFCB05', false: 'white'}} value={selectedCheckBox} onValueChange={() => selectPokemon(pokemonIndex)}/>
                 <Image resizeMode="contain" source={{uri: imageUrl}} style={styles.imagem}/>
-                <Text style={styles.fonte}>{data.item.name}</Text>
+                <Text style={styles.fonte}>{data.item.name.charAt(0).toUpperCase() + data.item.name.slice(1)}</Text>
             </View>
         </View>
     ); 

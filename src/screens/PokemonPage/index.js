@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react"
-import { View, TouchableHighlight, Text, TextInput, Image, ActivityIndicator } from 'react-native'
+import { View, TouchableHighlight, Text, Image, ActivityIndicator } from 'react-native'
 import styles from "./styles"
 import { useNavigation, useRoute } from "@react-navigation/native"
-import Background from "../../components/Background"
-import Header from "../../components/Header"
 import { usePoke } from "../../hooks/usePoke"
 
-function Pokemons() {
+function PokemonsPage() {
 
     const TYPE_COLORS = {
         bug: '#dced51',
@@ -32,7 +30,7 @@ function Pokemons() {
     const {navigate, goBack} = useNavigation(),
     route = useRoute(),
     {pokemonIndex, name} = route.params,
-    {getPokemon} = usePoke(),    
+    {getSpecific} = usePoke(),    
     [themeColor, setThemeColor] = useState(""),
     [currentPokemon, setCurrentPokemon] = useState({
         elementos: [],
@@ -42,7 +40,7 @@ function Pokemons() {
 
     useEffect(() => {
         async function getFullPokeInformation(){
-            const response = await getPokemon(pokemonIndex)
+            const response = await getSpecific('pokemon', pokemonIndex)
             const species = await await fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokemonIndex}`).then((data) => { return data.json()})
 
             storageInformation(response, species)
@@ -55,7 +53,7 @@ function Pokemons() {
         let nome = data.name, descricao
 
         const types = data.types.map(type => type.type.name)
-        setThemeColor(`${TYPE_COLORS[types[types.length-1]]}`)
+        setThemeColor(`${TYPE_COLORS[types[0]]}`)
 
         species.flavor_text_entries.some(flavor => {
             if (flavor.language.name === 'en') descricao = flavor.flavor_text.replace(/\s/g, ' ');
@@ -96,8 +94,6 @@ function Pokemons() {
             </View>
         );
     }
-
-
 }
 
-export default Pokemons
+export default PokemonsPage

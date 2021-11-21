@@ -5,16 +5,16 @@ export const PokeContext = createContext({})
 
 export default function PokeProvider({children}) {
 
-    async function getPokemon(pokemonId){
+    async function getSpecific(route, id){
 
-        const pokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`).then((response) => { return response.json() })
+        const pokemon = await fetch(`https://pokeapi.co/api/v2/${route}/${id}`).then((response) => { return response.json() })
 
         return pokemon
     }
 
-    async function getId(value){
+    async function getId(id ,route, limit){
         // Pega o id do pokemon de acordo com o nome ou id digitado
-        const check = await fetch(`https://pokeapi.co/api/v2/pokemon/${value}`)
+        const check = await fetch(`https://pokeapi.co/api/v2/${route}/${id}`)
         .then((response) => { return response.json()})
         .catch(() => { return false;});
         
@@ -22,22 +22,22 @@ export default function PokeProvider({children}) {
 
         // Faz a busca utilizando o id pesquisado
         if(valueId){
-            const response = await fetch(`https://pokeapi.co/api/v2/pokemon/?offset=${valueId}&limit=${1118-valueId}`).then((data) => { return data.json()});
+            const response = await fetch(`https://pokeapi.co/api/v2/${route}/?offset=${valueId}&limit=${limit-valueId}`).then((data) => { return data.json()});
             return response
         }else{
             Alert.alert("Erro na busca!", "O nome/ID digitado não foi encontrado!");
-            const response = await fetch(`https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1118`).then((data) => { return data.json()});
+            const response = await fetch(`https://pokeapi.co/api/v2/${route}/?offset=0&limit=${limit}`).then((data) => { return data.json()});
             return response
         }
     }
     
-    async function getPokeApi(param){
-        const response = await fetch(`https://pokeapi.co/api/v2/${param}/?offset=0&limit=1118`).then((data) => { return data.json()})
+    async function getPokeApi(route, limit){
+        const response = await fetch(`https://pokeapi.co/api/v2/${route}/?offset=0&limit=${limit}`).then((data) => { return data.json()})
         return response
     }
 
     return (
-        <PokeContext.Provider value={{getPokeApi, getId, getPokemon}}>
+        <PokeContext.Provider value={{getPokeApi, getId, getSpecific}}>
             { children }
         </PokeContext.Provider>
     )
