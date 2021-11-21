@@ -9,14 +9,17 @@ const styles = StyleSheet.create({
     },
     horizontalView: {        
         flexDirection: "row",
-        justifyContent: 'space-between'
+        justifyContent: 'flex-end',
+        marginHorizontal: '1%',
+        marginTop: '2%'
     },
     contentView:{
         flex: 1,
         backgroundColor: 'white',
         width: '100%',
         borderTopRightRadius: 50,
-        borderTopLeftRadius: 50,        
+        borderTopLeftRadius: 50,
+        padding: '5%',      
     },
     textInput: {
         fontSize: 20,
@@ -35,22 +38,10 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         marginHorizontal: 8,
     },
-    buttonText:{
-        fontSize: 23,
-        fontWeight: 'bold',
-        color: '#FFCB05',
-        textAlign: 'center'
-    },
-    searchButton:{
-        backgroundColor: '#0071b9',
-        padding: 8,
-        borderRadius: 10,
-        marginHorizontal: 5,
-    },
     image:{
         backgroundColor: 'transparent',
-        height: 400,
-        width: 400
+        height: 390,
+        width: 390
     },
     headerView: {
         flexDirection: 'row',
@@ -78,20 +69,24 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 30,
         marginBottom: '2%',
-        marginTop: '8%' 
     },
     title:{
         fontWeight: 'bold',
         textAlign: 'center',
         fontSize: 30,
-        marginBottom: '3%',
-        marginTop: '6%'          
+        marginBottom: '3%',        
     },
     textDescription: {
         fontSize: 18,
         color: 'grey',
         alignSelf: 'center',
-        marginHorizontal: '8%',        
+        marginHorizontal: '4%',        
+    },
+    addText: {
+        fontSize: 18,
+        color: 'grey',
+        alignSelf: 'center',
+        marginRight: '3%'
     }
 });
 

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react"
-import { View, TouchableHighlight, Text, Image, ActivityIndicator } from 'react-native'
+import { View, TouchableHighlight, Text, Image, ActivityIndicator, Switch } from 'react-native'
 import styles from "./styles"
 import { useNavigation, useRoute } from "@react-navigation/native"
 import { usePoke } from "../../hooks/usePoke"
+import Globais from "../../components/Global"
 
 function PokemonsPage() {
 
@@ -33,10 +34,11 @@ function PokemonsPage() {
     {getSpecific} = usePoke(),    
     [themeColor, setThemeColor] = useState(""),
     [currentPokemon, setCurrentPokemon] = useState({
-        elementos: [],
         nome: '',
         descricao: '',
-    })
+    }),
+    [switchValue, setSwitchValue] = useState(false)
+    
 
     useEffect(() => {
         async function getFullPokeInformation(){
@@ -50,7 +52,7 @@ function PokemonsPage() {
 
     function storageInformation(data, species){
 
-        let nome = data.name, descricao
+        let descricao
 
         const types = data.types.map(type => type.type.name)
         setThemeColor(`${TYPE_COLORS[types[0]]}`)
@@ -60,10 +62,46 @@ function PokemonsPage() {
         })
 
         setCurrentPokemon({
-            nome: nome.toUpperCase(),
+            nome: data.name.toUpperCase(),
             descricao: descricao
         })
 
+        if(Globais.currentBag.pokemons.some(pokemon => pokemon.nome === data.name.toUpperCase())){
+            setSwitchValue(true)
+        }else{
+            setSwitchValue(false)
+        }
+    }
+    
+    
+    function pokeToBag(){
+
+        setSwitchValue(!switchValue);
+
+        if(!switchValue){
+            Globais.currentBag.pokemons.push(currentPokemon)
+        }else{
+            Globais.currentBag.pokemons.forEach((pokemon, index) => {
+                if(pokemon.nome === currentPokemon.nome){
+                    Globais.currentBag.pokemons.splice(index, 1)
+                }
+            })
+        }
+        
+    }
+
+    function convertHex(hexCode,opacity){
+        var hex = hexCode.replace('#','');
+    
+        if (hex.length === 3) {
+            hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
+        }
+    
+        var r = parseInt(hex.substring(0,2), 16),
+            g = parseInt(hex.substring(2,4), 16),
+            b = parseInt(hex.substring(4,6), 16);
+    
+        return 'rgba('+r+','+g+','+b+','+opacity/100+')';
     }
 
     if(!themeColor){
@@ -89,6 +127,15 @@ function PokemonsPage() {
                     <View style={styles.contentView}>
                         <Text style={[styles.title, {color: themeColor}]}>{currentPokemon.nome}</Text>
                         <Text style={styles.textDescription}>{currentPokemon.descricao}</Text>
+                        <View style={styles.horizontalView}>
+                            <Text style={styles.addText}>{switchValue ? "Remove from" : "Add to"} bag</Text>
+                            <Switch
+                                trackColor={{ false: convertHex('#808080', 50), true: convertHex(themeColor, 50)}}
+                                thumbColor={switchValue ? themeColor : '#808080'}
+                                value={switchValue}
+                                onValueChange={pokeToBag}
+                            />
+                        </View>
                     </View>
                 </View>
             </View>
