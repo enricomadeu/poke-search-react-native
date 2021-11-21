@@ -50,8 +50,9 @@ const styles = StyleSheet.create({
     },
     image:{
         backgroundColor: 'transparent',
-        height: 200,
-        width: 200
+        height: 100,
+        width: 100,
+        marginBottom: '5%'
     },
     headerView: {
         flexDirection: 'row',
@@ -85,15 +86,15 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         textAlign: 'center',
         fontSize: 30,
-        marginBottom: '3%',
-        marginTop: '6%'          
+        marginBottom: '2%',
+        marginTop: '5%'          
     },
     secondTitle:{
         fontWeight: 'bold',
         textAlign: 'center',
         fontSize: 26,
         marginBottom: '1%',
-        marginTop: '4%',        
+        marginTop: '3%',        
     },
     textDescription: {
         fontSize: 18,

@@ -64,7 +64,7 @@ function MovesPage() {
         })
 
         data.effect_entries.some(effect => {
-            if (effect.language.name === 'en') efeito = effect.effect.replace(/\s/g, ' ').replace('$effect_chance% ', '');
+            if (effect.language.name === 'en') efeito = effect.short_effect.replace(/\s/g, ' ').replace('$effect_chance% ', '');
         })
 
         setCurrentMove({
@@ -132,7 +132,7 @@ function MovesPage() {
                 return require(`../../assets/Pokemon_Type_Icon_steel.png`)
                 
             case 'water':
-                return require(`../../assets/Pokemon_Type_Icon_bug.png`)
+                return require(`../../assets/Pokemon_Type_Icon_water.png`)
                 
             default:
                 break
@@ -158,7 +158,7 @@ function MovesPage() {
                     </TouchableHighlight>
                 </View>
                 <View style={styles.view}>
-                    <Image source={() => getImageType(currentMove.tipo)} resizeMode='cover' style={styles.image}/>
+                    <Image source={getImageType(currentMove.tipo)} resizeMode='cover' style={styles.image}/>
                     <View style={styles.contentView}>
                         <Text style={[styles.title, {color: themeColor}]}>{currentMove.nome.replace("-", " ")}</Text>
                         <Text style={[styles.secondTitle, {color: themeColor}]}>Descrição</Text>
