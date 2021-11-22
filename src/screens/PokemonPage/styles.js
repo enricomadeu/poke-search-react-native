@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
         width: '100%',
         borderTopRightRadius: 50,
         borderTopLeftRadius: 50,
-        padding: '5%',      
+        padding: '5%',
     },
     textInput: {
         fontSize: 20,
@@ -41,8 +41,8 @@ const styles = StyleSheet.create({
     },
     image:{
         backgroundColor: 'transparent',
-        height: 390,
-        width: 390
+        height: 350,
+        width: 350
     },
     headerView: {
         flexDirection: 'row',

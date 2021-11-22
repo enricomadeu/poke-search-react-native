@@ -27,7 +27,7 @@ function Login() {
       <View style={styles.view}>
         <View>
           <Image source={require('../../assets/pokemon-logo.png')} style={styles.logo}/>
-          <Text style={styles.welcomeText} onPress={() => {navigate("Tela1")}}>
+          <Text style={styles.welcomeText}>
               BEM VINDO AO{'\n'}POKEBAG
           </Text>
         </View>
