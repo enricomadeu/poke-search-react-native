@@ -21,7 +21,7 @@ function Pokemons() {
   const {getPokeApi, getId} = usePoke()
 
   async function searchPokemon(){
-    const response = await getId(search.toLowerCase(), 'pokemon', 1118)
+    const response = await getId(search.toLowerCase().replace(/ /g, '-'), 'pokemon', 1118)
 
     setPokemon(response.results)
 

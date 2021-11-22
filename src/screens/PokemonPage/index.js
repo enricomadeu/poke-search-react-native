@@ -151,7 +151,7 @@ function PokemonsPage() {
     useEffect(() => {
         async function getFullPokeInformation(){
             const response = await getSpecific('pokemon', pokemonIndex)
-            const species = await await fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokemonIndex}`).then((data) => { return data.json()})
+            const species = await await fetch(response.species.url).then((data) => { return data.json()})
 
             storageInformation(response, species)
         }

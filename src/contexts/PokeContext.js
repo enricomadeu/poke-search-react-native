@@ -18,8 +18,11 @@ export default function PokeProvider({children}) {
         .then((response) => { return response.json()})
         .catch(() => { return false;});
         
-        const valueId = parseInt((check.id-1));
+        let valueId = parseInt((check.id-1));
 
+        if(check.id > 898){
+            valueId-=9102
+        }
         // Faz a busca utilizando o id pesquisado
         if(valueId){
             const response = await fetch(`https://pokeapi.co/api/v2/${route}/?offset=${valueId}&limit=${limit-valueId}`).then((data) => { return data.json()});
