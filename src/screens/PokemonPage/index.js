@@ -66,6 +66,7 @@ function PokemonsPage() {
         }
 
         setPokemon(data)
+
     }
     
     
@@ -177,9 +178,9 @@ function PokemonsPage() {
                     </TouchableHighlight>
                 </View>
                 <View style={styles.view}>
-                    <Image source={{uri: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokemonIndex}.png`}} resizeMode='contain' style={styles.image}/>
+                    <Image source={{uri: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonIndex}.png`}} resizeMode='contain' style={styles.image}/>
                     <View style={styles.contentView}>
-                        <Text style={[styles.title, {color: themeColor}]}>{currentPokemon.nome}</Text>
+                        <Text style={[styles.title, {color: themeColor}]}>{currentPokemon.nome.replace(/-/g, ' ')}</Text>
                         <Text style={styles.textDescription}>{currentPokemon.descricao}</Text>
                         <View style={styles.horizontalView}>
                             <Text style={styles.addText}>{switchValue ? "Remove from" : "Add to"} bag</Text>
