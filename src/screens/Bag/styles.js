@@ -19,36 +19,28 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 30,
         marginBottom: 20,
-        color: '#000'
+        color: '#000',
+        fontFamily: 'sans-serif-condensed',
     },
     horizontalView: {        
         flexDirection: "row",
         marginBottom: 30,
         alignItems: "center",
     },
-    textInput: {
-        fontSize: 20,
-        backgroundColor: 'white',
-        paddingHorizontal: 15,
-        borderRadius: 10,
-        width: 300,
-        borderWidth: 3,
-        borderColor: '#0071b9',
-        marginBottom: 15
-    },
     button: {
         backgroundColor: '#0071b9',
-        paddingHorizontal: 33,
+        paddingHorizontal: 30,
         paddingVertical: 15,
         borderRadius: 10,
         marginVertical: 10,
-        width: 220,        
+        width: 200,        
     },
     buttonText:{
         fontSize: 20,
         fontWeight: 'bold',
         color: '#FFCB05',
-        textAlign: 'center'
+        textAlign: 'center',
+        fontFamily: 'sans-serif-condensed',
     }
 
 });

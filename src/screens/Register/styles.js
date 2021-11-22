@@ -9,8 +9,6 @@ const styles = StyleSheet.create({
         padding: 20,
         margin: 20,
         borderRadius: 20,
-        elevation: 10
-
     },
     inputView:{                
         alignItems: 'center',
@@ -25,7 +23,8 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 30,        
         marginTop: 40,
-        color: '#000'
+        color: '#000',
+        fontFamily: 'sans-serif-condensed',
     },
     horizontalView: {        
         flexDirection: "row",
@@ -42,6 +41,7 @@ const styles = StyleSheet.create({
         borderColor: '#0071b9',
         marginBottom: 15,
         color: 'black',
+        fontFamily: 'sans-serif-condensed',
     },
     button: {
         backgroundColor: '#0071b9',
@@ -54,7 +54,8 @@ const styles = StyleSheet.create({
     buttonText:{
         fontSize: 20,
         fontWeight: 'bold',
-        color: '#FFCB05'
+        color: '#FFCB05',
+        fontFamily: 'sans-serif-condensed',
     }
 
 });

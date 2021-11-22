@@ -29,7 +29,8 @@ const styles = StyleSheet.create({
         width: '80%',
         borderWidth: 3,
         borderColor: '#0071b9',
-        color: 'black'
+        color: 'black',
+        fontFamily: 'sans-serif-condensed',
     },
     button: {
         backgroundColor: '#0071b9',
@@ -54,39 +55,44 @@ const styles = StyleSheet.create({
     headerText:{
         fontSize: 30,
         fontWeight: 'bold',
-        color: '#000'
+        color: '#fff',
+        fontFamily: 'sans-serif-condensed',
     },
     headerLogOutImage: {
-        width: 45,
-        height: 45,       
+        width: 35,
+        height: 35,       
     },
     headerBackImage: {
-        width: 45,
-        height: 45,        
+        width: 35,
+        height: 35,        
     },
     pokeName:{
         fontWeight: 'bold',
         textAlign: 'center',
         fontSize: 30,
         marginBottom: '2%',
+        fontFamily: 'sans-serif-condensed',
     },
     title:{
         fontWeight: 'bold',
         textAlign: 'center',
         fontSize: 30,
-        marginBottom: '3%',        
+        marginBottom: '3%',
+        fontFamily: 'sans-serif-condensed',     
     },
     textDescription: {
         fontSize: 18,
         color: 'grey',
         alignSelf: 'center',
-        marginHorizontal: '4%',        
+        marginHorizontal: '4%',
+        fontFamily: 'sans-serif-condensed',       
     },
     addText: {
         fontSize: 18,
         color: 'grey',
         alignSelf: 'center',
-        marginRight: '3%'
+        marginRight: '3%',
+        fontFamily: 'sans-serif-condensed',
     }
 });
 

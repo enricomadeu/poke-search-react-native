@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react"
-import { View, FlatList, TouchableHighlight, Text, TextInput, Image } from 'react-native'
+import React, { useState, useEffect, useRef } from "react"
+import { View, FlatList, TouchableHighlight, Text, TextInput, Image, Keyboard } from 'react-native'
 import styles from "./styles"
 import { useNavigation, useRoute } from "@react-navigation/native"
 import Background from "../../components/Background"
@@ -13,7 +13,8 @@ function Pokemons() {
   route = useRoute(),
   {name} = route.params,
   [pokemon, setPokemon] = useState([]),
-  [search, setSearch] = useState("")  
+  [search, setSearch] = useState(""),
+  flatListRef = useRef()
 
   let pokemonIndex = 1
 
@@ -23,6 +24,10 @@ function Pokemons() {
     const response = await getId(search.toLowerCase(), 'pokemon', 1118)
 
     setPokemon(response.results)
+
+    flatListRef.current.scrollToIndex({ index: 0 })
+
+    Keyboard.dismiss()
   }
 
   useEffect(() => {
@@ -46,6 +51,7 @@ function Pokemons() {
             </TouchableHighlight>
           </View>
           <FlatList 
+            ref={flatListRef}
             numColumns={2}
             data={pokemon}
             extraData={pokemonIndex}

@@ -22,7 +22,8 @@ const styles = StyleSheet.create({
         width: '80%',
         borderWidth: 3,
         borderColor: '#0071b9',
-        color: 'black'
+        color: 'black',
+        fontFamily: 'sans-serif-condensed',
     },
     button: {
         backgroundColor: '#0071b9',
@@ -36,7 +37,8 @@ const styles = StyleSheet.create({
         fontSize: 23,
         fontWeight: 'bold',
         color: '#FFCB05',
-        textAlign: 'center'
+        textAlign: 'center',
+        fontFamily: 'sans-serif-condensed',
     },
     searchButton:{
         backgroundColor: '#0071b9',

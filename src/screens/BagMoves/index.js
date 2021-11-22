@@ -34,6 +34,7 @@ function BagMoves() {
                     refreshing={true}
                     renderItem={(item) => <MovesList data={item} name={name} pageType={true}/>}
                     keyExtractor={(item) => item.name}
+                    ListEmptyComponent={() => <Text>Nenhum movimento adicionado a bag.</Text>}
                 />
                 <TouchableHighlight style={styles.button} onPress={() => goBack()}>
                     <Text style={styles.buttonText}>

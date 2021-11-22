@@ -18,10 +18,9 @@ export default function MovesList({data, name, pageType}) {
 
         setTimeout(() => {setSelectedCheckBox(false)}, 1000)
     }
-
     // Define a numeração do pokemon
-    const url = data.item.url ? data.item.url : data.item.contest_effect.url;
-    const moveIndex = url.split('/')[url.split('/').length - 2];
+    const url = data.item.url ? data.item.url : false;
+    const moveIndex = url ? url.split('/')[url.split('/').length - 2] : data.item.id;
     // Pega a imagem do pokemon de acordo com sua numeração
 
     return(

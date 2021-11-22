@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
         marginHorizontal: '7%',
         marginVertical: '3%',
         textAlign: 'center',
+        fontFamily: 'sans-serif-condensed',
     },
     checkBox:{
         alignSelf: 'flex-end', 

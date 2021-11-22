@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { View, TouchableHighlight, Text, Image, ActivityIndicator, Switch } from 'react-native'
+import { View, TouchableHighlight, Text, Image, ActivityIndicator, Switch, Alert } from 'react-native'
 import styles from "./styles"
 import { useNavigation, useRoute } from "@react-navigation/native"
 import { usePoke } from "../../hooks/usePoke"
@@ -106,6 +106,48 @@ function PokemonsPage() {
         }
     }
 
+    const showAlert = () => Alert.alert(
+
+        "Logout!",
+        "Deseja mesmo fazer logout?",
+        [
+        {
+            text: "Cancel",
+            style: "cancel",
+        },
+        {
+            text: "Logout",
+            onPress: () => saveBag(),
+            style: 'destructive'
+        }
+        ],
+        {
+        cancelable: true,
+        }
+    );
+
+    function saveBag(){
+
+        Globais.allBags.forEach(user => {
+            if(user.user == Globais.currentBag.user){
+                user.pokemons = Globais.currentBag.pokemons
+                user.moves = Globais.currentBag.moves
+            }
+        })
+
+        Globais.currentBag = {
+            user: '',
+            pokemons: [],
+            moves: []
+        }
+        
+        navigate("Login")
+
+        Alert.alert(
+            "Usuário deslogado com sucesso!"
+            )
+    }
+
     useEffect(() => {
         async function getFullPokeInformation(){
             const response = await getSpecific('pokemon', pokemonIndex)
@@ -127,15 +169,15 @@ function PokemonsPage() {
             <View style={{flex: 1, backgroundColor: themeColor}}>
                 <View style={[styles.headerView]}>
                     <TouchableHighlight onPress={pageBack} style={styles.headerBackImage}>
-                        <Image source={require('../../assets/back-arrow.png')} style={{width: 45, height: 45}}/>
+                        <Image source={require('../../assets/back-arrow.png')} style={{width: 35, height: 35}}/>
                     </TouchableHighlight>
                     <Text style={styles.headerText}>{name.toUpperCase()}</Text>
-                    <TouchableHighlight onPress={() => navigate("Login")} style={styles.headerLogOutImage}>
-                        <Image source={require('../../assets/log-out.png')} style={{width: 45, height: 45}}/>
+                    <TouchableHighlight onPress={showAlert} style={styles.headerLogOutImage}>
+                        <Image source={require('../../assets/log-out.png')} style={{width: 35, height: 35}}/>
                     </TouchableHighlight>
                 </View>
                 <View style={styles.view}>
-                    <Image source={{uri: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonIndex}.png?raw=true`}} resizeMode='contain' style={styles.image}/>
+                    <Image source={{uri: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokemonIndex}.png`}} resizeMode='contain' style={styles.image}/>
                     <View style={styles.contentView}>
                         <Text style={[styles.title, {color: themeColor}]}>{currentPokemon.nome}</Text>
                         <Text style={styles.textDescription}>{currentPokemon.descricao}</Text>

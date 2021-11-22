@@ -8,20 +8,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         padding: 20
     },
-    logo:{
-        width: 300,
-        height: 110,
-        marginBottom: 50,
-        marginTop: -100,
-    },
-    welcomeText:{
-        fontWeight: 'bold',
-        textAlign: 'center',
-        fontSize: 30,
-        marginBottom: 20,
-        marginTop: 40,
-        color: '#000'
-    },
     horizontalViewSearch:{
         flexDirection: "row",
         alignItems: 'center',
@@ -36,7 +22,8 @@ const styles = StyleSheet.create({
         width: '80%',
         borderWidth: 3,
         borderColor: '#0071b9',
-        color: 'black'
+        color: 'black',
+        fontFamily: 'sans-serif-condensed',
     },
     button: {
         backgroundColor: '#0071b9',
@@ -50,7 +37,8 @@ const styles = StyleSheet.create({
         fontSize: 23,
         fontWeight: 'bold',
         color: '#FFCB05',
-        textAlign: 'center'
+        textAlign: 'center',
+        fontFamily: 'sans-serif-condensed',
     },
     searchButton:{
         backgroundColor: '#0071b9',

@@ -20,13 +20,15 @@ const styles = StyleSheet.create({
         fontSize: 22,
         fontWeight: 'bold',
         marginHorizontal: '7%',
-        marginBottom: '10%'
+        marginBottom: '10%',
+        fontFamily: 'sans-serif-condensed',
     },
     indexFont: {
         alignSelf: 'flex-start', 
         marginLeft: '5%',
         marginTop: '5%', 
-        color: 'white'
+        color: 'white',
+        fontFamily: 'sans-serif-condensed',
     },
     imagem: {
         backgroundColor: 'transparent',

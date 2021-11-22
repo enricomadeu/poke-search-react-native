@@ -20,23 +20,14 @@ const styles = StyleSheet.create({
         fontSize: 30,
         marginBottom: 20,
         marginTop: 10,
-        color: '#000'
+        color: '#000',
+        fontFamily: 'sans-serif-condensed',
     },
     horizontalViewSearch:{
         flexDirection: "row",
         alignItems: 'center',
         marginBottom: 15,
         marginTop: 10
-    },
-    textInput: {
-        fontSize: 20,
-        backgroundColor: 'white',
-        paddingHorizontal: 15,
-        borderRadius: 10,
-        width: '80%',
-        borderWidth: 3,
-        borderColor: '#0071b9',
-        color: 'black'
     },
     button: {
         backgroundColor: '#0071b9',
@@ -50,7 +41,8 @@ const styles = StyleSheet.create({
         fontSize: 23,
         fontWeight: 'bold',
         color: '#FFCB05',
-        textAlign: 'center'
+        textAlign: 'center',
+        fontFamily: 'sans-serif-condensed',
     },
     searchButton:{
         backgroundColor: '#0071b9',

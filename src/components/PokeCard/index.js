@@ -20,8 +20,8 @@ export default function PokeCard({data, name, pageType}) {
     }
 
     // Define a numeração do pokemon
-    const url = data.item.url ? data.item.url : data.item.species.url;
-    const pokemonIndex = url.split('/')[url.split('/').length - 2];
+    const url = data.item.url ? data.item.url : false;
+    const pokemonIndex = url ? url.split('/')[url.split('/').length - 2] : data.item.id;
     // Pega a imagem do pokemon de acordo com sua numeração
     const imageUrl = `https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/${pokemonIndex}.png?raw=true`;
 

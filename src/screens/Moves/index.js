@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react"
-import { View, TouchableHighlight, Text, TextInput, Image, FlatList } from 'react-native'
+import React, { useState, useEffect, useRef } from "react"
+import { View, TouchableHighlight, Text, TextInput, Image, FlatList, Keyboard } from 'react-native'
 import styles from "./styles"
 import { useNavigation, useRoute } from "@react-navigation/native"
 import Background from "../../components/Background"
@@ -14,7 +14,8 @@ function Moves() {
     {name} = route.params,
     [search, setSearch] = useState(""),
     [moves, setMoves] = useState([]),
-    {getPokeApi, getId} = usePoke()
+    {getPokeApi, getId} = usePoke(),
+    flatListRef = useRef()
 
     let moveIndex = 1
 
@@ -22,6 +23,10 @@ function Moves() {
         const response = await getId(search.toLowerCase().replace(" ", "-"), 'move', 844)
     
         setMoves(response.results)
+
+        flatListRef.current.scrollToIndex({ index: 0 })
+
+        Keyboard.dismiss()
     }
 
     useEffect(() => {
@@ -43,13 +48,15 @@ function Moves() {
                         <Image source={require('../../assets/loupe.png')} resizeMode='contain' style={styles.image}/>
                     </TouchableHighlight>
                 </View>
-                <FlatList 
+                <FlatList
+                    ref={flatListRef}
                     numColumns={1}
                     data={moves}
                     extraData={moveIndex}
                     refreshing={true}
                     renderItem={(item) => <MovesList data={item} name={name}/>}
-                    keyExtractor={(item) => item.name}
+                    keyExtractor={(item) => item.name}    
+                    style={{width: '100%'}}                
                 />
                 <TouchableHighlight style={styles.button} onPress={() => goBack()}>
                     <Text style={styles.buttonText}>

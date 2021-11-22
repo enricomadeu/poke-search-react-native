@@ -13,14 +13,15 @@ const styles = StyleSheet.create({
     headerText:{
         fontSize: 30,
         fontWeight: 'bold',
-        color: '#FFCB05'
+        color: '#FFCB05',
+        fontFamily: 'sans-serif-condensed',
     },
     headerImage: {
-        width: 45,
-        height: 45,
+        width: 35,
+        height: 35,
         position: 'absolute',
         right: 10,
-        top: 10,
+        top: 12.5,
     },
 
 });

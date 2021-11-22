@@ -22,7 +22,8 @@ const styles = StyleSheet.create({
         fontSize: 30,
         marginBottom: 20,
         marginTop: 40,
-        color: '#000'
+        color: '#000',
+        fontFamily: 'sans-serif-condensed',
     },
     horizontalView: {        
         flexDirection: "row",
@@ -38,7 +39,8 @@ const styles = StyleSheet.create({
         borderWidth: 3,
         borderColor: '#0071b9',
         marginBottom: 15,
-        color: 'black'
+        color: 'black',
+        fontFamily: 'sans-serif-condensed',
     },
     button: {
         backgroundColor: '#0071b9',
@@ -51,7 +53,8 @@ const styles = StyleSheet.create({
     buttonText:{
         fontSize: 20,
         fontWeight: 'bold',
-        color: '#FFCB05'
+        color: '#FFCB05',
+        fontFamily: 'sans-serif-condensed',
     }
 
 });

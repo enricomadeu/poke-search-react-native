@@ -34,6 +34,7 @@ function BagPokemons() {
             renderItem={(item) => <PokeCard data={item} name={name} pageType={true}/>}
             keyExtractor={(item) => item.name}
             style={{width: '100%'}}
+            ListEmptyComponent={() => <Text style={{marginLeft: '20%'}}>Nenhum pokemon adicionado a bag.</Text>}
           />
           <TouchableHighlight style={styles.button} onPress={() => goBack()}>
             <Text style={styles.buttonText}>

@@ -19,35 +19,6 @@ const styles = StyleSheet.create({
         borderTopRightRadius: 50,
         borderTopLeftRadius: 50,        
     },
-    textInput: {
-        fontSize: 20,
-        backgroundColor: 'white',
-        paddingHorizontal: 15,
-        borderRadius: 10,
-        width: '80%',
-        borderWidth: 3,
-        borderColor: '#0071b9',
-        color: 'black'
-    },
-    button: {
-        backgroundColor: '#0071b9',
-        paddingHorizontal: 30,
-        paddingVertical: 15,
-        borderRadius: 10,
-        marginHorizontal: 8,
-    },
-    buttonText:{
-        fontSize: 23,
-        fontWeight: 'bold',
-        color: '#FFCB05',
-        textAlign: 'center'
-    },
-    searchButton:{
-        backgroundColor: '#0071b9',
-        padding: 8,
-        borderRadius: 10,
-        marginHorizontal: 5,
-    },
     image:{
         backgroundColor: 'transparent',
         height: 150,
@@ -65,49 +36,54 @@ const styles = StyleSheet.create({
     headerText:{
         fontSize: 30,
         fontWeight: 'bold',
-        color: '#000'
+        color: '#fff',
+        fontFamily: 'sans-serif-condensed',
     },
     headerLogOutImage: {
-        width: 45,
-        height: 45,       
+        width: 35,
+        height: 35,       
     },
     headerBackImage: {
-        width: 45,
-        height: 45,        
+        width: 35,
+        height: 35,        
     },
     pokeName:{
         fontWeight: 'bold',
         textAlign: 'center',
         fontSize: 30,
         marginBottom: '2%',
-        marginTop: '8%' 
+        marginTop: '8%',
+        fontFamily: 'sans-serif-condensed',
     },
     title:{
         fontWeight: 'bold',
         textAlign: 'center',
         fontSize: 30,
         marginBottom: '2%',
-        marginTop: '5%'          
+        marginTop: '5%',
+        fontFamily: 'sans-serif-condensed',   
     },
     secondTitle:{
         fontWeight: 'bold',
         textAlign: 'center',
         fontSize: 26,
         marginBottom: '1%',
-        marginTop: '3%',        
+        marginTop: '3%',
+        fontFamily: 'sans-serif-condensed',       
     },
     textDescription: {
         fontSize: 18,
         color: 'grey',
         alignSelf: 'center',
-        marginHorizontal: '8%',        
+        marginHorizontal: '8%',
+        fontFamily: 'sans-serif-condensed',       
     },
-
     addText: {
         fontSize: 18,
         color: 'grey',
         alignSelf: 'center',
-        marginRight: '3%'
+        marginRight: '3%',
+        fontFamily: 'sans-serif-condensed',
     },
     horizontalViewAddMove: {
         flexDirection: "row",
